@@ -16,7 +16,8 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableScheduling
 public class ChuckNorrisApiApplication {
-	private Joke joke = new Joke();
+	private RestTemplate restTemplate = new RestTemplate();
+	private Joke joke = restTemplate.getForObject("https://api.chucknorris.io/jokes/random", Joke.class);
 
 	private static final Logger log = LoggerFactory.getLogger(ChuckNorrisApiApplication.class);
 
